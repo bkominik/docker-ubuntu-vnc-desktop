@@ -38,8 +38,8 @@ sed -i "s|%USER%|$USER|" /etc/supervisor/conf.d/supervisord.conf
 sed -i "s|%HOME%|$HOME|" /etc/supervisor/conf.d/supervisord.conf
 
 # home folder
-mkdir -p $HOME/.config/pcmanfm/LXDE/
-ln -sf /usr/local/share/doro-lxde-wallpapers/desktop-items-0.conf $HOME/.config/pcmanfm/LXDE/
+#mkdir -p $HOME/.config/pcmanfm/LXDE/
+#ln -sf /usr/local/share/doro-lxde-wallpapers/desktop-items-0.conf $HOME/.config/pcmanfm/LXDE/
 chown -R $USER:$USER $HOME
 
 # nginx workers
@@ -62,6 +62,12 @@ fi
 # novnc websockify
 ln -s /usr/local/lib/web/frontend/static/websockify /usr/local/lib/web/frontend/static/novnc/utils/websockify
 chmod +x /usr/local/lib/web/frontend/static/websockify/run
+
+# sshd
+sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+if [ ! -d /var/run/sshd ]; then
+	mkdir -p -m0755 /var/run/sshd 
+fi
 
 # clearup
 PASSWORD=

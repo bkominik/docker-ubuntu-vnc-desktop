@@ -12,16 +12,18 @@ RUN if [ "x$localbuild" != "x" ]; then sed -i 's#http://archive.ubuntu.com/#http
 RUN apt-get update \
     && apt-get install -y --no-install-recommends software-properties-common curl apache2-utils \
     && apt-get update \
+    && apt-get upgrade -y \
     && add-apt-repository -y ppa:fcwu-tw/apps \
     &&  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends --allow-unauthenticated \
         supervisor nginx sudo vim net-tools zenity xz-utils \
         dbus-x11 x11-utils alsa-utils \
         mesa-utils libgl1-mesa-dri \
-        lxde xvfb x11vnc=0.9.16-1 \
-        gtk2-engines-murrine gnome-themes-standard gtk2-engines-pixbuf gtk2-engines-murrine arc-theme \
+        xvfb x11vnc=0.9.16-1 \
+		xfce4 xfce4-terminal xfce4-taskmanager xfce4-whiskermenu-plugin \
+        #gtk2-engines-murrine gnome-themes-standard gtk2-engines-pixbuf gtk2-engines-murrine arc-theme \
         firefox chromium-browser \
         ttf-ubuntu-font-family ttf-wqy-zenhei \
-		openssh-client tmux git git-flow nmap zsh groff awscli \
+		openssh-server openssh-client tmux git git-flow nmap zsh groff awscli \
 		python3-pip \
     && add-apt-repository -r ppa:fcwu-tw/apps \
     && apt-get autoclean \

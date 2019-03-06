@@ -1,6 +1,6 @@
 #!/bin/sh
 
-REPO=bkominik/ubuntu-desktop-lxde-vnc
+REPO=bkominik/ubuntu-desktop-xfce-vnc
 TAG=latest
 IMAGE=ubuntu:18.04
 #LOCALBUILD=1
